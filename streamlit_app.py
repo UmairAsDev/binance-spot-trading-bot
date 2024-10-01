@@ -73,7 +73,7 @@ api_secret = st.text_input("Enter Binance API Secret", value="", type="password"
 # Initialize Binance client with error handling
 client = None
 try:
-    client = Client(api_key, api_secret, testnet=True)
+    client = Client(api_key, api_secret)
     client.ping()  # Test connection
     st.success("Successfully connected to Binance API!")
 except (BinanceAPIException, BinanceRequestException) as e:

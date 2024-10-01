@@ -3,13 +3,14 @@ import argparse
 import requests
 import sqlite3
 from binance.client import Client
+import os
 
 # Initialize and adjust trading fee percentage
 FEE_PERCENTAGE = 0.001  # 0.1% trading fee
 
 # Binance API Settings
-API_KEY = "FbPfUF83BUWUXICdUUQfiL7dWUjsYpD3RYe9PMmPMlZpVfZfPn0uplrnOKgLB4rb"
-API_SECRET = "oq9h93sHfhxdqRfUmg4KLk0Gp9dvdbqoCW4DH9q2UBhuWoytvxcTbPcmHczOxDiL"
+API_KEY = os.getenv("B_API_KEY")
+API_SECRET = os.getenv("B_API_SECRET")
 
 # Telegram settings
 ENABLE_TELEGRAM_REPORTING = False
@@ -88,7 +89,7 @@ def main():
     args = parser.parse_args()
 
     # Initialize the Binance client
-    client = Client(API_KEY, API_SECRET, testnet=True)
+    client = Client(API_KEY, API_SECRET)
     conn = init_db()
 
     last_cross = None
